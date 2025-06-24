@@ -1,0 +1,153 @@
+body {
+    background: #f0f4f8;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    padding: 0;
+    max-width: 850px;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+/* Header */
+.custom-card-header {
+    padding: 20px;
+    background: linear-gradient(135deg, #19711c, #81C784);
+    color: #fff;
+    text-align: center;
+    border-bottom: 3px solid #4CAF50;
+}
+
+.logo-img {
+    width: 200px;
+    height: 50px;
+    background: #fff;
+    padding: 5px;
+    border-radius: 50%;
+}
+.text-danger {
+    font-size: 0.9rem;
+    color: red;
+    margin-top: 5px;
+}
+
+.hospital-name {
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 10px;
+}
+#timeSlot {
+    background-color: #e8f5e9; /* light green fill */
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+#timeSlot:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+}
+
+.tagline {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #e8f5e9;
+}
+
+.services, .locations, .contact {
+    font-size: 0.85rem;
+    margin: 2px 0;
+}
+
+.youtube-link {
+    color: #ffd166;
+    text-decoration: underline;
+}
+
+.youtube-link:hover {
+    color: #ff7043;
+}
+
+/* Form Body */
+.card-body {
+    padding: 30px;
+    background: #f9fbe7; /* very light green background for form area */
+}
+
+.form-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+/* Input fields with light green backgrounds */
+.form-label {
+    color: #08750d;
+    font-weight: 800;
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    border: 1px solid #c8e6c9;
+    background-color: #e8f5e9; /* light green fill */
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+}
+
+/* Radio/checkbox area background */
+.mb-3 {
+    background: #e8f5e9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Button */
+.btn-success {
+    background: linear-gradient(45deg, #4CAF50, #81C784);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+.btn-success:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+.custom-footer {
+    background: rgb(176, 238, 145);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.85rem;
+   
+}
+
+.custom-footer a {
+    color: #ffd166;
+}
+
+.custom-footer a:hover {
+    color: #ff7043;
+}
