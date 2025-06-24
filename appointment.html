@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <title>BHUMI Nature Cure & Wellness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Raleway:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color:rgb(237, 238, 237);
+        }
+        .header-container {
+            text-align: center;
+            padding: 30px 20px;
+            background-color:rgb(176, 238, 145);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width:1300px;
+            margin: 20px auto;
+        }
+        .header-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: 3px;
+            font-size: 36px;
+            color: #6b8e23;
+            margin-bottom: 5px;
+        }
+        .header-subtitle {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            font-size: 18px;
+            letter-spacing: 2px;
+            color: #6b8e23;
+            margin-bottom: 15px;
+        }
+        .tagline, .services, .locations, .contact {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            color: #333;
+            margin: 5px 0;
+            letter-spacing: 1px;
+        }
+        .tagline {
+            font-style: italic;
+            color: #4B5320;
+            font-size: 16px;
+        }
+        .youtube-link {
+            color: #FF0000;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .youtube-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-container">
+    <h1 class="header-title">BHUMI</h1>
+    <p class="header-subtitle">NATURE CURE & WELLNESS</p>
+    <p class="tagline">Caring Naturally for a Healthier Tomorrow</p>
+    <p class="services">| Unani | Naturopathy | Ayurveda | Yoga | Acupuncture | Hijama | Wellness | Offline & Online Consultation |</p>
+    <p class="locations">PALAKKAD & THRISSUR</p>
+    <p class="contact">
+        📞 8505030406, 8504050805 | 
+        <a href="https://youtube.com/@bhumiwellness?si=NWtjXe0d8TE4D7nb" target="_blank" class="youtube-link">YouTube Channel</a>
+    </p>
+</div>
+</body>
+    <title>Hospital Appointment Booking </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+
+     <script>
+    const doctors = {
+        "Unani": ["Dr.Sherin shaharban", "Dr.Ummer Mukthar"],
+        "Naturopathy": ["Dr.Akshara", "Dr.Mufeeda"],
+        "Ayurveda": ["Dr.Ummer Mukthar", "Dr.Sherin shaharban"],
+        "Hijama": ["Dr.ALI ABRAR"]
+    };
+
+    function updateDoctors() {
+        const department = document.getElementById("department").value;
+        const doctorDropdown = document.getElementById("doctor");
+        doctorDropdown.innerHTML = ""; // Clear previous doctors
+
+        if (department in doctors) {
+            // Add a default "Select Doctor" option
+            doctorDropdown.disabled = false;
+            const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.text = "Select Doctor";
+            doctorDropdown.appendChild(defaultOption);
+
+            // Populate doctors for the selected department
+            doctors[department].forEach(function(doctor) {
+                const option = document.createElement("option");
+                option.value = doctor;
+                option.text = doctor;
+                doctorDropdown.appendChild(option);
+            });
+        } else {
+            doctorDropdown.disabled = true;
+            const option = document.createElement("option");
+            option.value = "";
+            option.text = "Select Department First";
+            doctorDropdown.appendChild(option);
+        }
+    }
+</script>
+    
+    <script>
+     window.onload = function() {
+            const dateInput = document.getElementById('appointment_date');
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const minDate = `${yyyy}-${mm}-${dd}`;
+
+            dateInput.setAttribute('min', minDate);
+
+            dateInput.addEventListener('input', function() {
+                const selectedDate = new Date(this.value);
+                if (selectedDate.getDay() === 0) { // Sunday
+                    alert('Appointments cannot be booked on Sundays.');
+                    this.value = ''; // clear the value
+                }
+            });
+        };
+
+    
+</script>
+<script>
+function loadAvailableSlots() {
+    const doctor = document.getElementById('doctor').value;
+    const appointment_date = document.getElementById('appointment_date').value;
+
+    if(doctor && appointment_date){
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'get_available_slots.php?doctor=' + encodeURIComponent(doctor) + '&appointment_date=' + encodeURIComponent(appointment_date), true);
+        xhr.onload = function() {
+            if (this.status === 200) {
+                const availableSlots = JSON.parse(this.responseText);
+                const slotDropdown = document.getElementById('time_slot');
+                slotDropdown.innerHTML = '';
+
+                if(availableSlots.length > 0){
+                    availableSlots.forEach(function(slot){
+                        const option = document.createElement('option');
+                        option.value = slot;
+                        option.text = slot;
+                        slotDropdown.appendChild(option);
+                    });
+                } else {
+                    const option = document.createElement('option');
+                    option.value = '';
+                    option.text = 'No slots available';
+                    slotDropdown.appendChild(option);
+                }
+            }
+        };
+        xhr.send();
+    }
+}
+</script>  
+</head>
+<body>
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">        
+ <div class="card-header text-center bg-light custom-card-header">
+           <h3>Book an Appointment</h3>
+        </div>
+        <div class="card-body p-4">
+            <form action="/hospitalbooking/save.php" method="POST" enctype="multipart/form-data">
+
+                <!-- Textbox -->
+                <div class="mb-3">
+                    <label class="form-label">Patient Name:</label>
+                    <input type="text" class="form-control" name="patient_name"placeholder="Enter Patient Name" maxlength="30" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email:</label>
+                    <input type="email" class="form-control" name="email"placeholder="Enter Email"maxlength="35" >
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">PhoneNumber:</label>
+                    <input type="text" class="form-control" name="phone"placeholder="Enter Phone number" maxlength="10" required>
+                </div>
+
+                <!-- Textarea -->
+                <div class="mb-3">
+                    <label class="form-label">Medical Issue:</label>
+                    <textarea class="form-control" name="medical_issue" rows="3" placeholder="Enter Medical Issue"></textarea>
+                </div>
+
+                <!-- Date Picker -->
+                
+                   <div class="mb-3">
+    <label class="form-label">Appointment Date:</label>
+    <input type="date" class="form-control" name="appointment_date" id="appointment_date"  onchange="loadAvailableSlots();">
+    <small class="text-danger" id="dateError"></small>
+</div>
+                  <div class="mb-3">
+    <label for="time_slot" class="form-label">Preferred Time Slot:</label>
+    <select class="form-select" id="time_slot" name="time_slot" required>
+        <option value="">Select Time Slot</option>
+        <option value="9am-10am">09:00 AM - 10:00 AM</option>
+        <option value="10am-11am">10:00 AM - 11:00 AM</option>
+        <option value="11am-12pm">11:00 AM - 12:00 PM</option>
+        <option value="2pm-3pm">02:00 PM - 03:00 PM</option>
+        <option value="3pm-4pm">03:00 PM - 04:00 PM</option>
+        <option value="4pm-5pm">04:00 PM - 05:00 PM</option>
+    </select>
+</div> 
+
+                <!-- Radio Buttons -->
+                <div class="mb-3">
+                    <label class="form-label d-block">Gender:</label>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="gender" value="0" required>
+                        <label class="form-check-label">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="gender" value="1">
+                        <label class="form-check-label">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="gender" value="2">
+                        <label class="form-check-label">Other</label>
+                    </div>
+                </div>
+
+                <!-- Department Dropdown -->
+                <div class="mb-3">
+                    <label class="form-label">Department:</label>
+                    <select class="form-select" id="department" name="department" onchange="updateDoctors()" required>
+                        <option value="">Select</option>
+                        <option value="Unani">Unani</option>
+                        <option value="Naturopathy">Naturopathy</option>
+                        <option value="Ayurveda">Ayurveda</option>
+                        <option value="Hijama">Hijama</option>
+                    </select>
+                </div>
+
+                <!-- Doctor Dropdown -->
+                <div class="mb-3">
+                    <label class="form-label">Doctor:</label>
+                    <select class="form-select" id="doctor" name="doctor" required onchange="loadAvailableSlots();">
+                        <option value="">Select Department First</option>
+                      
+                    </select>
+                </div>
+
+                <!-- Checkbox -->
+                <div class="mb-3">
+                    <label class="form-label d-block">Previous Medical Conditions:</label>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" name="previous_medical_conditions[]" value="Diabetes">
+                        <label class="form-check-label">Diabetes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" name="previous_medical_conditions[]" value="BP">
+                        <label class="form-check-label">BP</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" name="previous_medical_conditions[]" value="Heart Disease">
+                        <label class="form-check-label">Heart Disease</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" name="previous_medical_conditions[]" value="Kidney Disease">
+                        <label class="form-check-label">Kidney Disease</label>
+                    </div>
+                </div>
+
+                <!-- File Upload -->
+                <div class="mb-3">
+                    <label class="form-label">Upload Previous Medical Report:</label>
+                    <input type="file" class="form-control" name="report" accept=".jpg,.png,.pdf">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success">Book Appointment</button>
+                </div>
+            </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
