@@ -1,0 +1,293 @@
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  a { text-decoration: none; }
+
+  .hero {
+    position: relative;
+    height: 900px;
+    background: url('bumi.jpeg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative;
+    color: #fff;
+    padding: 20px;
+    max-width: 800px;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+  .btn {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    border: none;
+  }
+  .btn-primary {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background-color: #45a049;
+  }
+  .btn-outline {
+    background-color: transparent;
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+  }
+  .btn-outline:hover {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+  h2 {
+    text-align: center;
+    color: #333;
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+  }
+  p {
+    text-align: center;
+    color: #555;
+    font-size: 1.1rem;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    width: 280px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+  }
+  .card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  .card-body {
+    padding: 20px;
+    flex: 1;
+  }
+  .card h3 {
+    margin: 0 0 10px;
+    font-size: 1.3rem;
+    color: #333;
+  }
+  .card p {
+    font-size: 0.95rem;
+    color: #666;
+  }
+
+  .testimonials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+  .testimonial {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 25px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    max-width: 320px;
+  }
+  .testimonial p {
+    font-style: italic;
+    color: #444;
+  }
+  .testimonial strong {
+    display: block;
+    margin-top: 12px;
+    text-align: right;
+    font-weight: 600;
+    color: #333;
+  }
+  .about{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  .hdrow{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  .headersection{
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.17);
+
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+ .navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* optional, for horizontal nav */
+}
+
+.navbar ul li {
+  position: relative; /* Key fix */
+  margin: 0 15px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #000; /* adjust as needed */
+  padding: 10px 5px;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.navbar ul li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #00b773;
+  border-radius: 10px;
+  transition: width 0.3s ease-in-out;
+}
+
+.navbar ul li:hover::after {
+  width: 100%;
+}
+.headersection.sticky {
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2.4rem; }
+    .cards, .testimonials { flex-direction: column; align-items: center; }
+  }
+</style>
+<header class="headersection">
+  <div class="container">
+      <div class="navbar">
+        <ul><li><a href="home.php">Home</a></li><li><a href="index.php">Book Appointment</a></li><li><a href="feedback.php">Feedback</a></li><li><a href="login.php">Login</a></li><li><a href="contact.php">Contact Us</a></li></ul></div>
+
+</div>
+</header>
+
+<main class="hero">
+  <div class="hero-content">
+      <a href="index.php" class="btn btn-primary">Book Appointment</a>
+      <a href="login.php" class="btn btn-outline">Login</a>
+  </div>
+</main>
+
+<div class="container  about">
+  <div class="divider">
+  <h2>About BHUMI</h2>
+  <p>BHUMI Nature Cure & Wellness offers advanced natural treatments focusing on pain relief, lifestyle disease management, and skincare. We specialize in Unani, Naturopathy, Ayurveda, and Hijama therapies ensuring complete holistic care for our patients.</p>
+</div>
+</div>
+<div class="container">
+  <h2>Our Services</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="unani.jpg" alt="Unani Treatment">
+      <div class="card-body">
+        <h3>Unani Therapy</h3>
+        <p>Traditional Unani medicine for complete body balance and immunity boost.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="ayurveda.webp" alt="Ayurveda">
+      <div class="card-body">
+        <h3>Ayurveda</h3>
+        <p>Ancient Ayurvedic treatments for lifestyle disorders and stress management.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="hijama.jpeg" alt="Hijama">
+      <div class="card-body">
+        <h3>Hijama & Cupping</h3>
+        <p>Effective cupping therapy to detoxify and rejuvenate your body.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<div class="container">
+  <h2>What Our Patients Say</h2>
+  <div class="testimonials">
+    <div class="testimonial">
+      <p>"I found relief from chronic back pain with BHUMI's Unani therapy. Highly recommend their care and professionalism!"</p>
+      <strong>– Ameer A.</strong>
+    </div>
+    <div class="testimonial">
+      <p>"Their Hijama therapy was life-changing. Clean, safe, and effective!"</p>
+      <strong>– Fatima S.</strong>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('.headersection');
+    
+    if (window.scrollY > 100) {
+        header.classList.add('sticky');
+    } else {
+        header.classList.remove('sticky');
+    }
+});
+
+  </script>
