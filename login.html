@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container mt-5">
+        <div class="card shadow-lg border-0">            
+ <div class="card-header text-center bg-light custom-card-header">
+    <h2>Login</h2> 
+</div>
+        <div class="card-body p-4">
+        
+    <form action="loginsave.php" method="POST">
+        <div class="mb-3">
+         <label class="form-label">Email:</label>
+        <input type="email" name="email"class="form-control" placeholder="Enter your Email" required><br><br>
+        <label class="form-label">Password:</label>
+        <input type="password" name="password"class="form-control" placeholder="Enter Strong Password" required><br><br>
+       <center> <button type="submit" class="custom-btn">Login</button></center>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    <style>
+     .custom-btn {
+        
+    background-color: #06b836;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-btn:hover {
+    background-color: #0f9613;
+    box-shadow: 0 4px 12px rgba(20, 148, 33, 0.808);
+}
+    </style>
+</body>
+</html>
